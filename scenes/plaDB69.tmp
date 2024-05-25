@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://byvc75gerfdm6"]
+
+[ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="1_buguj"]
+[ext_resource type="Texture2D" uid="uid://xrbtpk5hbqjx" path="res://assets/sprites/player/mamacat2.png" id="2_r4yne"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_buguj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-32, -81)
+scale = Vector2(3, 3)
+texture = ExtResource("2_r4yne")

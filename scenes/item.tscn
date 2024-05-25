@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bksjiwkl25vdm"]
+
+[ext_resource type="Script" path="res://scripts/Item/item.gd" id="1_vrfnk"]
+[ext_resource type="Texture2D" uid="uid://bb0twmt1imegn" path="res://icon.svg" id="2_8tyaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ap13k"]
+radius = 59.1354
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_vrfnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8tyaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ap13k")
+
+[node name="Tooltip" type="Label" parent="."]
+offset_left = 57.0
+offset_top = -119.0
+offset_right = 303.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 36
+text = "Tooltip"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
