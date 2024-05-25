@@ -1,25 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c53x77dm8kkba"]
+[gd_scene load_steps=4 format=3 uid="uid://c53x77dm8kkba"]
 
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_lku5a"]
+[ext_resource type="PackedScene" uid="uid://gd0fepm5ujit" path="res://scenes/player.tscn" id="1_6byuk"]
+[ext_resource type="PackedScene" uid="uid://bnr7irtfdt4pu" path="res://scenes/item.tscn" id="2_dxltw"]
+[ext_resource type="Script" path="res://scenes/MouseController.gd" id="3_m8pmd"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_lku5a")
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = -50.0
-offset_right = 105.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 41
-text = "This is a label"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Player" parent="." instance=ExtResource("1_6byuk")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Item" parent="Items" instance=ExtResource("2_dxltw")]
+position = Vector2(135, -2)
+
+[node name="Item2" parent="Items" instance=ExtResource("2_dxltw")]
+position = Vector2(-60, -5)
+
+[node name="Item3" parent="Items" instance=ExtResource("2_dxltw")]
+position = Vector2(-131, -5)
+
+[node name="Item4" parent="Items" instance=ExtResource("2_dxltw")]
+position = Vector2(50, -4)
+
+[node name="MouseController" type="Node" parent="."]
+script = ExtResource("3_m8pmd")
