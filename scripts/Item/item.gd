@@ -6,17 +6,27 @@ extends Area2D
 @onready var tooltip = $Tooltip
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var player = $"../Player"
+@onready var animated_sprite_2d = $AnimatedSprite2D
+const HAND_CLOSED = preload("res://assets/sprites/cursor/cursor_paw_clutch.png")
+const HAND_OPEN = preload("res://assets/sprites/cursor/cursor_paw_open.png")
 
 var itemIs = "air"
 
-const HAND_OPEN = preload("res://assets/sprites/cursor/HandOpen.png")
-const HAND_CLOSED = preload("res://assets/sprites/cursor/HandClosed.png")
+#func _process(delta):
+	#if itemIs == "air":
+		#animated_sprite_2d.play("0")
+	#if itemIs == "":
+
+
+#const HAND_OPEN = preload("res://assets/sprites/cursor/HandOpen.png")
+#const HAND_CLOSED = preload("res://assets/sprites/cursor/HandClosed.png")
 
 var mouseOverItem = false
 var itemClicked = false
 func _ready():
 	tooltip.visible = false
 	tooltip.text = ItemTooltipText
+	
 
 func _process(delta):
 	if(itemClicked):

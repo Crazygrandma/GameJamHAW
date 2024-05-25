@@ -1,16 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://bksjiwkl25vdm"]
+[gd_scene load_steps=8 format=3 uid="uid://bksjiwkl25vdm"]
 
 [ext_resource type="Script" path="res://scripts/Item/item.gd" id="1_vrfnk"]
-[ext_resource type="Texture2D" uid="uid://bb0twmt1imegn" path="res://icon.svg" id="2_8tyaf"]
+[ext_resource type="Texture2D" uid="uid://l0ns536f8yqf" path="res://assets/sprites/props/0.png" id="2_6q5o8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ap13k"]
 radius = 59.1354
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jli78"]
+atlas = ExtResource("2_6q5o8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frfhw"]
+atlas = ExtResource("2_6q5o8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8o1w"]
+atlas = ExtResource("2_6q5o8")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ys57d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jli78")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frfhw")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8o1w")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]
+
 [node name="Item" type="Area2D"]
 script = ExtResource("1_vrfnk")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8tyaf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ap13k")
@@ -24,6 +60,11 @@ theme_override_font_sizes/font_size = 36
 text = "Tooltip"
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ys57d")
+animation = &"0"
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="property_list_changed" from="." to="." method="_on_property_list_changed"]
