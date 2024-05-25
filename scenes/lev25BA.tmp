@@ -22,11 +22,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_gjy46")
 
 [node name="Item" parent="." instance=ExtResource("2_ormic")]
-position = Vector2(169, 241)
+position = Vector2(60, -24)
 scale = Vector2(0.395, 0.395)
 
 [node name="ClimableSurafce" parent="." instance=ExtResource("4_gmln5")]
-visible = false
 position = Vector2(-133, 117)
 scale = Vector2(2.315, 2.315)
 
