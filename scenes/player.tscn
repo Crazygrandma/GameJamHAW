@@ -763,7 +763,7 @@ texture = ExtResource("2_r4yne")
 position = Vector2(-32, -81)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5767o")
-animation = &"Hide"
+animation = &"Walk_R"
 autoplay = "Idle_R"
 
 [node name="facingLeft" type="AnimatedSprite2D" parent="."]
