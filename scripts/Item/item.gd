@@ -7,6 +7,7 @@ extends Area2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var player = $"../Player"
 
+var itemIs = "air"
 
 const HAND_OPEN = preload("res://assets/sprites/cursor/HandOpen.png")
 const HAND_CLOSED = preload("res://assets/sprites/cursor/HandClosed.png")
@@ -37,7 +38,6 @@ func _on_mouse_exited():
 func _input(event):
 	if event.is_action_pressed("leftMouseClick"):
 		if mouseOverItem:
-			player.moveToPos(position)
 			itemClicked = true
 		else:
 			#Player clicked somewhere else

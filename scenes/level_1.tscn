@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7p31b35pnf5m"]
+[gd_scene load_steps=7 format=3 uid="uid://b7p31b35pnf5m"]
 
 [ext_resource type="PackedScene" uid="uid://byvc75gerfdm6" path="res://scenes/player.tscn" id="1_0uidn"]
 [ext_resource type="PackedScene" uid="uid://bksjiwkl25vdm" path="res://scenes/item.tscn" id="2_ormic"]
 [ext_resource type="Texture2D" uid="uid://c6kmg72nvbxsa" path="res://assets/sprites/environment/Background.png" id="4_gjy46"]
 [ext_resource type="PackedScene" uid="uid://b3c53h1ricqui" path="res://scenes/climable_surface.tscn" id="4_gmln5"]
+[ext_resource type="Texture2D" uid="uid://l0ns536f8yqf" path="res://assets/sprites/props/0.png" id="4_ucs67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rut3q"]
 radius = 37.8802
@@ -25,6 +26,9 @@ texture = ExtResource("4_gjy46")
 position = Vector2(169, 241)
 scale = Vector2(0.395, 0.395)
 
+[node name="Sprite2D" parent="Item" index="0"]
+texture = ExtResource("4_ucs67")
+
 [node name="ClimableSurafce" parent="." instance=ExtResource("4_gmln5")]
 visible = false
 position = Vector2(-133, 117)
@@ -34,4 +38,5 @@ scale = Vector2(2.315, 2.315)
 shape = SubResource("CircleShape2D_rut3q")
 
 [editable path="Player"]
+[editable path="Item"]
 [editable path="ClimableSurafce"]
