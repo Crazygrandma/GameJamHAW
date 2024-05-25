@@ -1,29 +1,88 @@
-[gd_scene load_steps=4 format=3 uid="uid://c53x77dm8kkba"]
+[gd_scene load_steps=9 format=3 uid="uid://c53x77dm8kkba"]
 
-[ext_resource type="PackedScene" uid="uid://gd0fepm5ujit" path="res://scenes/player.tscn" id="1_6byuk"]
-[ext_resource type="PackedScene" uid="uid://bnr7irtfdt4pu" path="res://scenes/item.tscn" id="2_dxltw"]
-[ext_resource type="Script" path="res://scenes/MouseController.gd" id="3_m8pmd"]
+[ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="1_16rod"]
+[ext_resource type="Texture2D" uid="uid://xrbtpk5hbqjx" path="res://assets/sprites/player/mamacat2.png" id="3_3cpbe"]
+[ext_resource type="Texture2D" uid="uid://cwv3pfqwjmp1d" path="res://assets/sprites/Background.png" id="4_g4nl3"]
+[ext_resource type="Script" path="res://scripts/Item/item.gd" id="5_bnyou"]
+[ext_resource type="Texture2D" uid="uid://dslb8mbjnqmgf" path="res://assets/sprites/Item.png" id="5_j02y0"]
+[ext_resource type="Texture2D" uid="uid://bb0twmt1imegn" path="res://icon.svg" id="6_f8lag"]
+
+[sub_resource type="GDScript" id="GDScript_is3ou"]
+script/source = "extends Node
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6iwv7"]
+radius = 85.0941
 
 [node name="Game" type="Node2D"]
+script = SubResource("GDScript_is3ou")
 
-[node name="Player" parent="." instance=ExtResource("1_6byuk")]
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-452, 324)
+script = ExtResource("1_16rod")
+playerSpeed = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-32, -81)
+scale = Vector2(3, 3)
+texture = ExtResource("3_3cpbe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+
+[node name="Level1" type="Node" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Level1"]
+z_index = -10
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_g4nl3")
 
 [node name="Items" type="Node" parent="."]
 
-[node name="Item" parent="Items" instance=ExtResource("2_dxltw")]
-position = Vector2(135, -2)
+[node name="Item" type="Area2D" parent="Items"]
+position = Vector2(-165, 187)
+scale = Vector2(0.37, 0.37)
+script = ExtResource("5_bnyou")
+ItemTooltipText = "Item1"
 
-[node name="Item2" parent="Items" instance=ExtResource("2_dxltw")]
-position = Vector2(-60, -5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Item"]
+shape = SubResource("CircleShape2D_6iwv7")
 
-[node name="Item3" parent="Items" instance=ExtResource("2_dxltw")]
-position = Vector2(-131, -5)
+[node name="Sprite2D" type="Sprite2D" parent="Items/Item"]
+texture = ExtResource("6_f8lag")
 
-[node name="Item4" parent="Items" instance=ExtResource("2_dxltw")]
-position = Vector2(50, -4)
+[node name="Tooltip" type="Label" parent="Items/Item"]
+offset_left = 57.0
+offset_top = -119.0
+offset_right = 303.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 36
+text = "Tooltip"
+metadata/_edit_use_anchors_ = true
 
-[node name="MouseController" type="Node" parent="."]
-script = ExtResource("3_m8pmd")
+[node name="Wrench" type="Area2D" parent="Items"]
+position = Vector2(441, 243)
+scale = Vector2(0.38, 0.38)
+script = ExtResource("5_bnyou")
+ItemTooltipText = "Wrnech"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Wrench"]
+shape = SubResource("CircleShape2D_6iwv7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Wrench"]
+texture = ExtResource("5_j02y0")
+
+[node name="Tooltip" type="Label" parent="Items/Wrench"]
+offset_left = 57.0
+offset_top = -119.0
+offset_right = 303.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 36
+text = "Tooltip"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="Items/Item" to="Items/Item" method="_on_input_event"]
+[connection signal="mouse_entered" from="Items/Item" to="Items/Item" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Items/Item" to="Items/Item" method="_on_mouse_exited"]
+[connection signal="input_event" from="Items/Wrench" to="Items/Wrench" method="_on_input_event"]
+[connection signal="mouse_entered" from="Items/Wrench" to="Items/Wrench" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Items/Wrench" to="Items/Wrench" method="_on_mouse_exited"]

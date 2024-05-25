@@ -1,0 +1,46 @@
+extends Area2D
+
+@export var ItemTooltipText = "Ein tolles Item"
+@export var pickupRadius = 200
+
+@onready var tooltip = $Tooltip
+@onready var player = $"../../Player"
+@onready var collision_shape_2d = $CollisionShape2D
+
+
+const HAND_OPEN = preload("res://assets/sprites/HandOpen.png")
+const HAND_CLOSED = preload("res://assets/sprites/HandClosed.png")
+
+var mouseOverItem = false
+var itemClicked = false
+
+
+func _ready():
+	tooltip.visible = false
+	tooltip.text = ItemTooltipText
+
+func _process(delta):
+	if(itemClicked):
+		var distance = position.distance_to(player.position)
+		if distance < collision_shape_2d.shape.radius * 2:
+			# Player can reach item
+			queue_free()
+
+func _on_mouse_entered():
+	mouseOverItem = true
+	Input.set_custom_mouse_cursor(HAND_OPEN)
+	tooltip.visible = true
+
+func _on_mouse_exited():
+	mouseOverItem = false
+	Input.set_custom_mouse_cursor(HAND_CLOSED)
+	tooltip.visible = false
+	
+func _input(event):
+	if event.is_action_pressed("leftMouseClick"):
+		if mouseOverItem:
+			player.moveToPos(position)
+			itemClicked = true
+		else:
+			#Player clicked somewhere else
+			itemClicked = false
