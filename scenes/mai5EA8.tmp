@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctwdif4tagqx3"]
+
+[ext_resource type="Texture2D" uid="uid://bnyoynrqu76qh" path="res://assets/MusicSounds/placeholderBackground.jpg" id="1_2clga"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_ny0si"]
+[ext_resource type="AudioStream" uid="uid://dhkp81ew8jove" path="res://assets/MusicSounds/Town1.ogg" id="2_fuase"]
+[ext_resource type="AudioStream" uid="uid://c8tk7brpt8s8f" path="res://assets/MusicSounds/Cursor3.ogg" id="4_b0obf"]
+[ext_resource type="AudioStream" uid="uid://b0kksfut475t8" path="res://assets/MusicSounds/Buzzer2.ogg" id="5_4wc4a"]
+
+[sub_resource type="SystemFont" id="SystemFont_eb7a8"]
+font_names = PackedStringArray("Consolas")
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ny0si")
+
+[node name="BackGroundPicture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -404.0
+offset_top = -322.0
+offset_right = 364.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2clga")
+
+[node name="Main_Menu_Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_fuase")
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_eb7a8")
+theme_override_font_sizes/font_size = 100
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Btn_Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="Seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Btn_Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="Btn_Click_Sound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+stream = ExtResource("4_b0obf")
+
+[node name="Btn_Quit_Sound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+stream = ExtResource("5_4wc4a")

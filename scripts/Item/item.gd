@@ -8,8 +8,8 @@ extends Area2D
 @onready var player = $"../Player"
 
 
-const HAND_OPEN = preload("res://assets/sprites/HandOpen.png")
-const HAND_CLOSED = preload("res://assets/sprites/HandClosed.png")
+const HAND_OPEN = preload("res://assets/sprites/cursor/HandOpen.png")
+const HAND_CLOSED = preload("res://assets/sprites/cursor/HandClosed.png")
 
 var mouseOverItem = false
 var itemClicked = false
