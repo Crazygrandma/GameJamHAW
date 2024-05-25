@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var playerSpeed = 200.0
 @onready var sprite_2d = $Sprite2D
 @onready var MamaCat = $AnimatedSprite2D
+@onready var CatMama = $facingLeft
 
 #const MAMACAT = preload("res://assets/sprites/player/mamacat2.png")
 #const FLIPPEDMAMACAT = preload("res://assets/sprites/player/flippedmamacat.png")
@@ -21,21 +22,20 @@ func _input(event):
 func _process(_delta):
 	print(target, position, velocity)
 	
-	#if facing == true and target.x == position.x: #idle
-		#MamaCat.play("Idle_L")
-	#else:
-		#MamaCat.play("Idle_R")
-	
 	if target.x > position.x: #walking and player behavior
 		# Player moves to the right
 		MamaCat.play("Walk_R")
+		CatMama.play("Hide")
 	elif target.x < position.x:
-		MamaCat.play("Walk_L")
+		CatMama.play("Walk_L")
+		MamaCat.play("Hide")
 	else:
 		if facing == true: #idle animation
-			MamaCat.play("Idle_L")
+			CatMama.play("Idle_L")
+			MamaCat.play("Hide")
 		else:
 			MamaCat.play("Idle_R")
+			CatMama.play("Hide")
 	
 	
 	
