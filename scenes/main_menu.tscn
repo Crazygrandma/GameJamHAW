@@ -34,6 +34,7 @@ texture = ExtResource("1_2clga")
 [node name="Main_Menu_Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_fuase")
 autoplay = true
+bus = &"Music"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -99,6 +100,8 @@ text = "Quit"
 
 [node name="Btn_Click_Sound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 stream = ExtResource("4_b0obf")
+bus = &"Sfx"
 
 [node name="Btn_Quit_Sound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 stream = ExtResource("5_4wc4a")
+bus = &"Sfx"
