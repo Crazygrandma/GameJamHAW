@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var playerSpeed = 200.0
 @onready var sprite_2d = $Sprite2D
-@onready var MamaCat = $AnimatedSprite2D
-@onready var CatMama = $facingLeft
+@onready var MamaCat = $AnimatedSprite2D #katze nach rechts
+@onready var CatMama = $facingLeft #katze nach links
 
 #const MAMACAT = preload("res://assets/sprites/player/mamacat2.png")
 #const FLIPPEDMAMACAT = preload("res://assets/sprites/player/flippedmamacat.png")
