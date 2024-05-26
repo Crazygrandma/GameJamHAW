@@ -7,9 +7,13 @@ extends Control
 @onready var start_level = preload("res://scenes/level_1.tscn") as PackedScene
 @onready var btn_click_sound = $MarginContainer/HBoxContainer/VBoxContainer/Btn_Click_Sound as AudioStreamPlayer2D
 @onready var btn_quit_sound = $MarginContainer/HBoxContainer/VBoxContainer/Btn_Quit_Sound as AudioStreamPlayer2D
+@onready var catharina_pic = $catharinaPic as TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	catharina_pic.visible = true
+	await get_tree().create_timer(3).timeout
+	catharina_pic.visible = false
 	btn_start.button_down.connect(on_start_pressed)
 	btn_quit.button_down.connect(on_quit_pressed)
 
