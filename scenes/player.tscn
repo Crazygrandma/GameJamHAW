@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://byvc75gerfdm6"]
+[gd_scene load_steps=106 format=3 uid="uid://byvc75gerfdm6"]
 
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="1_buguj"]
 [ext_resource type="Texture2D" uid="uid://b7p0r2h7r6vxq" path="res://assets/sprites/player/all_animations2.png" id="3_8btl0"]
@@ -749,18 +749,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dky3"]
+radius = 98.1275
+
 [node name="Player" type="CharacterBody2D"]
+z_index = 100
 script = ExtResource("1_buguj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CatAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(-32, -81)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5767o")
 animation = &"Hide"
 autoplay = "Idle_R"
+frame_progress = 0.662754
 
 [node name="facingLeft" type="AnimatedSprite2D" parent="."]
 position = Vector2(28, -81)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_joky3")
 animation = &"Walk_L"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -80)
+shape = SubResource("CircleShape2D_1dky3")

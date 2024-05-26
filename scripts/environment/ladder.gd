@@ -1,12 +1,14 @@
-class_name item
+class_name ladder
 extends Area2D
 
 @export var ItemTooltipText = "Ein tolles Item"
-@export var itemName = ""
+@export var jumpHeight = 100
+
+@export var exitVector: Vector2
+
 
 
 @onready var tooltip = $Tooltip
-@onready var collision_shape_2d = $CollisionShape2D
 
 # Player ref
 @onready var player = $"../Player"
@@ -14,65 +16,57 @@ extends Area2D
 @onready var level_1 = $".."
 
 
-
-
-signal onItem
-signal offItem
-
-
 signal itemPickup(name)
 
 const CURSOR_PAW_OPEN = preload("res://assets/sprites/cursor/cursor_paw_open.png")
 const CURSOR_PAW_CLUTCH = preload("res://assets/sprites/cursor/cursor_paw_clutch.png")
+@onready var from_collider = $FromCollider
+@onready var to_collider = $ToCollider
 
+@onready var min_collider = $MinCollider
+@onready var max_collider = $MaxCollider
 
 var mouseOverItem = false
 var itemClicked = false
 
+var playerOverlap = false
+
+var playerOnTop = false
+
 
 func _ready():
+	
 	# Connect to signals
-
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
+	connect("body_entered", _on_body_entered)
+	connect("body_exited", _on_body_exited)
 	
 	tooltip.visible = false
 	tooltip.text = ItemTooltipText
 
+
 func _process(delta):
-	# Check if item is clicked
-	if(itemClicked):
-		# Check if player is near item
-		var distance = position.distance_to(player.position)
-		if distance < collision_shape_2d.shape.radius * 2:
-			# Player can reach item
-			# Emit itemPickup signal
-			
-			#player.hello(itemName)
-			
-			if level_1.currentItem:
-				print("Item already in inv..swapping")
-				var prevPos = self.position
-				self.position = Vector2(1000,0)
-				level_1.currentItem.position = prevPos
-				level_1.currentItem = self
-				itemClicked = false
+	if playerOverlap:
+		if itemClicked:
+			if playerOnTop:
+				player.targetMinX = -2000
+				player.targetMaxX = 2000
+				player.jumpTo(from_collider.position)
+				playerOnTop = false
 			else:
-				print("pickupItem")
-				level_1.currentItem = self
-				self.position = Vector2(1000,0)
-				itemClicked = false
-				
-				
+				player.jumpTo(to_collider.position)
+				player.targetMinX = min_collider.position.x
+				player.targetMaxX = max_collider.position.x
+				playerOnTop = true
+			itemClicked=false
 
-func _on_item_pickup():
-	
-	print("added to inv")
-	# Move item out of frame
-	position = Vector2(0,0)
+func _on_body_entered(body):
+	playerOverlap = true
 
 
-	
+func _on_body_exited(body):
+	playerOverlap = false
 
 func _on_mouse_entered():
 	mouseOverItem = true
