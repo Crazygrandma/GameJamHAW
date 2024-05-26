@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ck1d2fpd1o4n8"
+path="res://.godot/imported/intro scene with music.mp3-747c94aebec38281fe04f0b88f1e0905.mp3str"
+
+[deps]
+
+source_file="res://assets/sprites/Intro/intro scene with music.mp3"
+dest_files=["res://.godot/imported/intro scene with music.mp3-747c94aebec38281fe04f0b88f1e0905.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

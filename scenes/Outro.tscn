@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://blk6xohb54gi4"]
+
+[ext_resource type="Script" path="res://scenes/Outro.gd" id="1_bxk0n"]
+[ext_resource type="Texture2D" uid="uid://cjkmthhbbtft7" path="res://assets/sprites/Outro/black.jpg" id="2_00me4"]
+[ext_resource type="AudioStream" uid="uid://btqd0km0ilooo" path="res://assets/sprites/Outro/end scene.mp3" id="2_la3ya"]
+[ext_resource type="Texture2D" uid="uid://gyx5krxfog26" path="res://assets/sprites/Outro/cat1.png" id="4_3i027"]
+[ext_resource type="Texture2D" uid="uid://danug0d42438v" path="res://assets/sprites/Outro/cat2.png" id="5_3f26a"]
+[ext_resource type="Texture2D" uid="uid://pn6u1vdpcel0" path="res://assets/sprites/Outro/cat3.png" id="6_nd5u4"]
+[ext_resource type="Texture2D" uid="uid://dxje3mv0lxobx" path="res://assets/sprites/Outro/cat4.png" id="7_etbdj"]
+
+[node name="Outro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxk0n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_00me4")
+
+[node name="OutroSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_la3ya")
+bus = &"Music"
+
+[node name="cat1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3i027")
+
+[node name="cat2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3f26a")
+
+[node name="cat3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_nd5u4")
+
+[node name="cat4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_etbdj")

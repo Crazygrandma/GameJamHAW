@@ -211,6 +211,10 @@ bus = &"Sfx"
 stream = ExtResource("5_4wc4a")
 bus = &"Sfx"
 
+[node name="Btn_abspann" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Abspann"
+
 [node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 

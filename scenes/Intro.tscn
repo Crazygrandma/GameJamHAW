@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgvd84tekfr6k"]
+
+[ext_resource type="Script" path="res://scenes/Intro.gd" id="1_4tngo"]
+[ext_resource type="Texture2D" uid="uid://cjkmthhbbtft7" path="res://assets/sprites/Outro/black.jpg" id="1_s1701"]
+[ext_resource type="AudioStream" uid="uid://ck1d2fpd1o4n8" path="res://assets/sprites/Intro/intro scene with music.mp3" id="2_jrofc"]
+[ext_resource type="Texture2D" uid="uid://w3ksqx5kh5dx" path="res://assets/sprites/Intro/cat1.png" id="4_bjvf5"]
+[ext_resource type="Texture2D" uid="uid://pa0q1xfkru7e" path="res://assets/sprites/Intro/cat2.png" id="5_amu06"]
+[ext_resource type="Texture2D" uid="uid://cbhnptg42psdi" path="res://assets/sprites/Intro/cat3.png" id="6_0wxxo"]
+[ext_resource type="Texture2D" uid="uid://c686oyk2gcg52" path="res://assets/sprites/Intro/cat4.png" id="7_k0qio"]
+[ext_resource type="Texture2D" uid="uid://hfo6i4fiixi5" path="res://assets/sprites/Intro/cat5.png" id="8_8yu46"]
+[ext_resource type="Texture2D" uid="uid://dk1awfrwc7vaa" path="res://assets/sprites/Intro/cat6.png" id="9_0wggk"]
+[ext_resource type="Texture2D" uid="uid://bglcrc37h6yv8" path="res://assets/sprites/Intro/cat7.png" id="10_0g053"]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4tngo")
+
+[node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jrofc")
+bus = &"Music"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s1701")
+
+[node name="cat1" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bjvf5")
+
+[node name="cat2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_amu06")
+
+[node name="cat3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0wxxo")
+
+[node name="cat4" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_k0qio")
+
+[node name="cat5" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_8yu46")
+
+[node name="cat6" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_0wggk")
+
+[node name="cat7" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_0g053")
