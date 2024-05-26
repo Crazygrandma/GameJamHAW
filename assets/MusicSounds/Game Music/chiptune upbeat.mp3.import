@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccq5c0yx1lfgu"
+path="res://.godot/imported/chiptune upbeat.mp3-ce4e4c1156b21ad77c5df21b786217f7.mp3str"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Game Music/chiptune upbeat.mp3"
+dest_files=["res://.godot/imported/chiptune upbeat.mp3-ce4e4c1156b21ad77c5df21b786217f7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

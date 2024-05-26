@@ -4,6 +4,7 @@ extends Area2D
 @export var ItemTooltipText = "Ein tolles Item"
 @export var itemName = ""
 
+@onready var hatch_open = $"../HatchOpen"
 
 @export var requestedItemName = ""
 @export var resultingItem: item
@@ -57,6 +58,7 @@ func _process(delta):
 				# check if item is required
 				if level_1.currentItem.itemName == requestedItemName:
 					
+					hatch_open.play()
 					
 					print("End game")
 					

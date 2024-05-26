@@ -14,7 +14,9 @@ extends Area2D
 @onready var player = $"../Player"
 
 @onready var level_1 = $".."
-
+@onready var pickupsound = $"../Pickupsound"
+@onready var combine_success = $"../CombineSuccess"
+@onready var combine_fail = $"../CombineFail"
 
 
 signal itemPickup(name)
@@ -43,12 +45,18 @@ func _process(delta):
 		var distance = position.distance_to(player.position)
 		if distance < collision_shape_2d.shape.radius:
 			# Player can reach item
+			
+			# play pickupsound
+			pickupsound.play()
+			
 			# Emit itemPickup signal
 			if level_1.currentItem:
 				
 				# check if item is required
 				if level_1.currentItem.itemName == requestedItemName:
 					print("Do something")
+					
+					combine_success.play()
 					
 					# Spawn resulting item
 					level_1.currentItem = null
@@ -60,6 +68,7 @@ func _process(delta):
 					
 					
 				else:
+					combine_fail.play()
 						
 					print("Item already in inv..swapping")
 					var prevPos = self.position
@@ -73,16 +82,7 @@ func _process(delta):
 				self.position = Vector2(1000,0)
 				itemClicked = false
 				
-				
 
-func _on_item_pickup():
-	
-	print("added to inv")
-	# Move item out of frame
-	position = Vector2(0,0)
-
-
-	
 
 func _on_mouse_entered():
 	mouseOverItem = true

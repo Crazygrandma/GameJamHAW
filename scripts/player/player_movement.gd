@@ -11,6 +11,9 @@ extends CharacterBody2D
 @onready var facing_left = $facingLeft
 @onready var timer = $Timer
 
+@onready var walk = $"../Walk"
+
+
 @onready var area_2d = $"../Area2D"
 
 
@@ -46,11 +49,13 @@ func processAnimation():
 		cat_animation.show()
 		cat_animation.play("Walk_R")
 		facing_left.hide()
+		walk.play()
 	elif velocity.x < 0:
 		facingRight = false
 		facing_left.show()
 		facing_left.play("Walk_L")
 		cat_animation.hide()
+		walk.play()
 	else:
 		## Player standing still
 		if facingRight: #idle animation

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv7xmc6xl5vc3"
+path="res://.godot/imported/Level 1.mp3-29371207a2fdd79a3ff080fac97d8b9a.mp3str"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Game Music/Level 1.mp3"
+dest_files=["res://.godot/imported/Level 1.mp3-29371207a2fdd79a3ff080fac97d8b9a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -25,6 +25,10 @@ const CURSOR_PAW_CLUTCH = preload("res://assets/sprites/cursor/cursor_paw_clutch
 
 @onready var min_collider = $MinCollider
 @onready var max_collider = $MaxCollider
+@onready var ladder_climb = $"../LadderClimb"
+
+
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 var mouseOverItem = false
 var itemClicked = false

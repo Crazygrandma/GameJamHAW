@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg57060m22d4u"
+path="res://.godot/imported/rod_1.mp3-b8a013dc61bf14a8bf31c11a93ece679.mp3str"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Level 1/rod_1.mp3"
+dest_files=["res://.godot/imported/rod_1.mp3-b8a013dc61bf14a8bf31c11a93ece679.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
