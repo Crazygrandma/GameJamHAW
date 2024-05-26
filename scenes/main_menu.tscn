@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctwdif4tagqx3"]
+[gd_scene load_steps=10 format=3 uid="uid://ctwdif4tagqx3"]
 
 [ext_resource type="Texture2D" uid="uid://bnyoynrqu76qh" path="res://assets/MusicSounds/placeholderBackground.jpg" id="1_2clga"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_ny0si"]
 [ext_resource type="AudioStream" uid="uid://dhkp81ew8jove" path="res://assets/MusicSounds/Town1.ogg" id="2_fuase"]
+[ext_resource type="Script" path="res://scenes/HSliderMasterVolume.gd" id="4_ao0sf"]
 [ext_resource type="AudioStream" uid="uid://c8tk7brpt8s8f" path="res://assets/MusicSounds/Cursor3.ogg" id="4_b0obf"]
 [ext_resource type="AudioStream" uid="uid://b0kksfut475t8" path="res://assets/MusicSounds/Buzzer2.ogg" id="5_4wc4a"]
+[ext_resource type="Script" path="res://scenes/HSliderMusicVolume.gd" id="5_jcrhm"]
+[ext_resource type="Script" path="res://scenes/HSliderSfxVolume.gd" id="6_1ig5s"]
 
 [sub_resource type="SystemFont" id="SystemFont_eb7a8"]
 font_names = PackedStringArray("Consolas")
@@ -70,7 +73,9 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -79,9 +84,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 18
 alignment = 1
-
-[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="Btn_Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(240, 64)
@@ -105,3 +107,46 @@ bus = &"Sfx"
 [node name="Btn_Quit_Sound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 stream = ExtResource("5_4wc4a")
 bus = &"Sfx"
+
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("4_ao0sf")
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("5_jcrhm")
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Sounds"
+
+[node name="HSlider3" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("6_1ig5s")
