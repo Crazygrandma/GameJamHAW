@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7p31b35pnf5m"]
+
+[ext_resource type="PackedScene" uid="uid://byvc75gerfdm6" path="res://scenes/player.tscn" id="1_0uidn"]
+[ext_resource type="Script" path="res://scripts/environment/level_1.gd" id="1_fta55"]
+[ext_resource type="Texture2D" uid="uid://b6mjd4jftm370" path="res://assets/sprites/environment/myromeempire.png" id="3_ypvrd"]
+[ext_resource type="PackedScene" uid="uid://bksjiwkl25vdm" path="res://scenes/item.tscn" id="4_x7tjq"]
+[ext_resource type="Texture2D" uid="uid://l0ns536f8yqf" path="res://assets/sprites/props/0.png" id="5_6sfak"]
+[ext_resource type="Texture2D" uid="uid://dbg4rucfxktqd" path="res://assets/sprites/props/2.png" id="6_r6ad1"]
+[ext_resource type="Script" path="res://scripts/environment/ladder.gd" id="7_fwmuc"]
+[ext_resource type="Texture2D" uid="uid://bnthpax6rihs3" path="res://assets/sprites/environment/shelf_.png" id="8_e6ku4"]
+[ext_resource type="Texture2D" uid="uid://cj8bybwxqywok" path="res://assets/sprites/environment/fuckingtablef_.png" id="9_d5gej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8kff"]
+size = Vector2(40, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cae30"]
+size = Vector2(39, 34)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_fta55")
+playerFloor = null
+
+[node name="Player" parent="." instance=ExtResource("1_0uidn")]
+position = Vector2(-93, 31)
+scale = Vector2(0.2, 0.2)
+playerSpeed = 100.0
+
+[node name="CatAnimation" parent="Player" index="0"]
+animation = &"Idle_R"
+frame_progress = 0.0
+
+[node name="facingLeft" parent="Player" index="1"]
+visible = false
+animation = &"Jump_L"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.6, 0.6)
+zoom = Vector2(3, 3)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(0, -3)
+texture = ExtResource("3_ypvrd")
+
+[node name="Item" parent="." instance=ExtResource("4_x7tjq")]
+position = Vector2(-233, 229)
+itemName = "Haken"
+
+[node name="Sprite2D" parent="Item" index="0"]
+texture = ExtResource("5_6sfak")
+
+[node name="Tooltip" parent="Item" index="2"]
+offset_left = -48.0
+offset_top = -74.0
+offset_right = 198.0
+offset_bottom = -24.0
+theme_override_font_sizes/font_size = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item2" parent="." instance=ExtResource("4_x7tjq")]
+visible = false
+position = Vector2(436, 229)
+ItemTooltipText = "godot"
+itemName = "item2"
+
+[node name="Item3" parent="." instance=ExtResource("4_x7tjq")]
+visible = false
+position = Vector2(100, 222)
+ItemTooltipText = "2"
+itemName = "Item3"
+
+[node name="Sprite2D" parent="Item3" index="0"]
+texture = ExtResource("6_r6ad1")
+
+[node name="shelf" type="Area2D" parent="."]
+script = ExtResource("7_fwmuc")
+jumpHeight = 300
+exitVector = Vector2(-60, -60)
+
+[node name="Sprite2D" type="Sprite2D" parent="shelf"]
+texture = ExtResource("8_e6ku4")
+
+[node name="Tooltip" type="Label" parent="shelf"]
+offset_left = -163.0
+offset_top = -56.0
+offset_right = -102.0
+offset_bottom = -33.0
+theme_override_font_sizes/font_size = 10
+text = "tooltip1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelf"]
+position = Vector2(-104, 5)
+shape = SubResource("RectangleShape2D_h8kff")
+debug_color = Color(0.843968, 0.365383, 0.279388, 0.42)
+
+[node name="table" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-47, 0)
+script = ExtResource("7_fwmuc")
+jumpHeight = 300
+exitVector = Vector2(0, -45)
+
+[node name="Sprite2D" type="Sprite2D" parent="table"]
+texture = ExtResource("9_d5gej")
+
+[node name="Tooltip" type="Label" parent="table"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="table"]
+position = Vector2(-48, 52)
+shape = SubResource("RectangleShape2D_cae30")
+
+[connection signal="itemPickup" from="Item2" to="." method="_on_item_item_pickup"]
+[connection signal="itemPickup" from="Item3" to="." method="_on_item_item_pickup"]
+[connection signal="input_event" from="shelf" to="shelf" method="_on_input_event"]
+[connection signal="mouse_entered" from="shelf" to="shelf" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="shelf" to="shelf" method="_on_mouse_exited"]
+[connection signal="input_event" from="table" to="table" method="_on_input_event"]
+[connection signal="mouse_entered" from="table" to="table" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="table" to="table" method="_on_mouse_exited"]
+
+[editable path="Player"]
+[editable path="Item"]
+[editable path="Item2"]
+[editable path="Item3"]
