@@ -1,4 +1,4 @@
-class_name item
+class_name luke
 extends Area2D
 
 @export var ItemTooltipText = "Ein tolles Item"
@@ -8,23 +8,25 @@ extends Area2D
 @export var requestedItemName = ""
 @export var resultingItem: item
 @onready var tooltip = $Tooltip
-@onready var collision_shape_2d = $CollisionShape2D
 
 # Player ref
 @onready var player = $"../Player"
 
 @onready var level_1 = $".."
 
-
+const CREDITS = preload("res://scenes/Credits.tscn") as PackedScene
 
 signal itemPickup(name)
 
 const CURSOR_PAW_OPEN = preload("res://assets/sprites/cursor/cursor_paw_open.png")
 const CURSOR_PAW_CLUTCH = preload("res://assets/sprites/cursor/cursor_paw_clutch.png")
+@onready var exit_area = $"../ExitArea"
 
 
 var mouseOverItem = false
 var itemClicked = false
+
+var playerinEndArea = false
 
 
 func _ready():
@@ -32,57 +34,39 @@ func _ready():
 
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
+	exit_area.connect("body_entered", _on_body_entered)
+	exit_area.connect("body_exited", _on_body_exited)
 	
 	tooltip.visible = false
 	tooltip.text = ItemTooltipText
 
+func _on_body_entered(body):
+	playerinEndArea = true
+	
+func _on_body_exited(body):
+	playerinEndArea = false
+
 func _process(delta):
 	# Check if item is clicked
 	if(itemClicked):
-		# Check if player is near item
-		var distance = position.distance_to(player.position)
-		if distance < collision_shape_2d.shape.radius:
-			# Player can reach item
-			# Emit itemPickup signal
+		
+		if playerinEndArea:
+			print("Player can reach")
 			if level_1.currentItem:
-				
+				print(level_1.currentItem)
 				# check if item is required
 				if level_1.currentItem.itemName == requestedItemName:
-					print("Do something")
-					
-					# Spawn resulting item
-					level_1.currentItem = null
-					var prevPos = self.position
-					resultingItem.position = prevPos
-					
-					queue_free()
 					
 					
+					print("End game")
 					
-				else:
-						
-					print("Item already in inv..swapping")
-					var prevPos = self.position
-					self.position = Vector2(1000,0)
-					level_1.currentItem.position = prevPos
-					level_1.currentItem = self
+					get_tree().change_scene_to_packed(CREDITS)
+					
 					itemClicked = false
-			else:
-				print("pickupItem")
-				level_1.currentItem = self
-				self.position = Vector2(1000,0)
-				itemClicked = false
+					
+					
+					
 				
-				
-
-func _on_item_pickup():
-	
-	print("added to inv")
-	# Move item out of frame
-	position = Vector2(0,0)
-
-
-	
 
 func _on_mouse_entered():
 	mouseOverItem = true
