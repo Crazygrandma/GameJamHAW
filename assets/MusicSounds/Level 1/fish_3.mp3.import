@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bofsu2xwo7rkg"
+path="res://.godot/imported/fish_3.mp3-f9c4bb27268d4e1de4b5ebe6ec7d8401.mp3str"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Level 1/fish_3.mp3"
+dest_files=["res://.godot/imported/fish_3.mp3-f9c4bb27268d4e1de4b5ebe6ec7d8401.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

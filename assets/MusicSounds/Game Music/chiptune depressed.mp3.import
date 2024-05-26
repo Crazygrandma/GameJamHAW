@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://43gm6dg6k5ig"
+path="res://.godot/imported/chiptune depressed.mp3-ba5292f9332cc8090ff1b1f5c76601fe.mp3str"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Game Music/chiptune depressed.mp3"
+dest_files=["res://.godot/imported/chiptune depressed.mp3-ba5292f9332cc8090ff1b1f5c76601fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

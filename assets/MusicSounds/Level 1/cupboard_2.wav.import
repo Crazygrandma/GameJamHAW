@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ik7266fhbhsa"
+path="res://.godot/imported/cupboard_2.wav-0637442731a30e710c929861a7af142c.sample"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Level 1/cupboard_2.wav"
+dest_files=["res://.godot/imported/cupboard_2.wav-0637442731a30e710c929861a7af142c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
