@@ -1,4 +1,4 @@
-class_name item
+class_name luke
 extends Area2D
 
 @export var ItemTooltipText = "Ein tolles Item"
@@ -15,6 +15,7 @@ extends Area2D
 
 @onready var level_1 = $".."
 
+@onready var interaction_collider = $InteractionCollider
 
 
 signal itemPickup(name)
@@ -40,49 +41,18 @@ func _process(delta):
 	# Check if item is clicked
 	if(itemClicked):
 		# Check if player is near item
-		var distance = position.distance_to(player.position)
-		if distance < collision_shape_2d.shape.radius:
+		var distance = interaction_collider.position.distance_to(player.position)
+		if distance < 100:
 			# Player can reach item
-			# Emit itemPickup signal
 			if level_1.currentItem:
-				
+				print(curr)
 				# check if item is required
 				if level_1.currentItem.itemName == requestedItemName:
-					print("Do something")
-					
-					# Spawn resulting item
-					level_1.currentItem = null
-					var prevPos = self.position
-					resultingItem.position = prevPos
-					
-					queue_free()
+					print("End game")
 					
 					
 					
-				else:
-						
-					print("Item already in inv..swapping")
-					var prevPos = self.position
-					self.position = Vector2(1000,0)
-					level_1.currentItem.position = prevPos
-					level_1.currentItem = self
-					itemClicked = false
-			else:
-				print("pickupItem")
-				level_1.currentItem = self
-				self.position = Vector2(1000,0)
-				itemClicked = false
 				
-				
-
-func _on_item_pickup():
-	
-	print("added to inv")
-	# Move item out of frame
-	position = Vector2(0,0)
-
-
-	
 
 func _on_mouse_entered():
 	mouseOverItem = true
