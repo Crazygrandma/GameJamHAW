@@ -50,8 +50,8 @@ func _process(delta):
 	if playerOverlap:
 		if itemClicked:
 			if playerOnTop:
-				player.targetMinX = -2000
-				player.targetMaxX = 2000
+				player.targetMinX = -500
+				player.targetMaxX = 500
 				player.jumpTo(from_collider.position)
 				playerOnTop = false
 			else:

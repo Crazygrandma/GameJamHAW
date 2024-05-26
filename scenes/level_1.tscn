@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b7p31b35pnf5m"]
+[gd_scene load_steps=31 format=3 uid="uid://b7p31b35pnf5m"]
 
 [ext_resource type="PackedScene" uid="uid://byvc75gerfdm6" path="res://scenes/player.tscn" id="1_0uidn"]
 [ext_resource type="Script" path="res://scripts/environment/level_1.gd" id="1_fta55"]
@@ -31,11 +31,14 @@ size = Vector2(43, 41.75)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ap13k"]
 radius = 15.7459
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_254yj"]
-radius = 63.0079
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgc03"]
+radius = 43.9025
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fyuws"]
 radius = 29.1204
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_254yj"]
+radius = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxnhs"]
 size = Vector2(22, 97)
@@ -45,11 +48,11 @@ size = Vector2(22, 97)
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3yn5"]
 radius = 14.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p36ay"]
-radius = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdrfi"]
+radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_35ek1"]
-radius = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etgfh"]
+size = Vector2(41, 20)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_fta55")
@@ -188,7 +191,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Haken" type="Area2D" parent="." node_paths=PackedStringArray("resultingItem")]
-position = Vector2(-252, 146)
+position = Vector2(-342, 214)
 scale = Vector2(0.205, 0.205)
 script = ExtResource("7_rdjni")
 ItemTooltipText = "Haken"
@@ -197,21 +200,21 @@ requestedItemName = "rodnohook"
 resultingItem = NodePath("../RodWithHook")
 
 [node name="Sprite2D" type="Sprite2D" parent="Haken"]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("10_mptde")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Haken"]
-shape = SubResource("CircleShape2D_254yj")
 
 [node name="Tooltip" type="Label" parent="Haken"]
 z_index = 10
-offset_left = 57.0
-offset_top = -119.0
-offset_right = 303.0
-offset_bottom = -69.0
+offset_left = -58.5366
+offset_top = -92.6829
+offset_right = 187.463
+offset_bottom = -42.6829
 theme_override_font_sizes/font_size = 36
 text = "Tooltip"
 metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Haken"]
+shape = SubResource("CircleShape2D_pgc03")
 
 [node name="RodNoHook" type="Area2D" parent="." node_paths=PackedStringArray("resultingItem")]
 position = Vector2(-89, 91)
@@ -343,7 +346,6 @@ shape = SubResource("CircleShape2D_a3yn5")
 position = Vector2(-109, -95)
 script = ExtResource("15_pkrwx")
 ItemTooltipText = "Luke"
-itemName = null
 requestedItemName = "rodwithhook"
 
 [node name="Sprite2D" type="Sprite2D" parent="Luke"]
@@ -362,14 +364,16 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Luke"]
-position = Vector2(51, 3)
-shape = SubResource("CircleShape2D_p36ay")
+[node name="SelectCollider" type="CollisionShape2D" parent="Luke"]
+position = Vector2(51, 4)
+shape = SubResource("CircleShape2D_cdrfi")
 
-[node name="InteractionCollider" type="CollisionShape2D" parent="Luke"]
-position = Vector2(-34, 46)
-shape = SubResource("CircleShape2D_35ek1")
-debug_color = Color(0.412654, 0.601746, 0.204381, 0.42)
+[node name="ExitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(-150, -34)
+shape = SubResource("RectangleShape2D_etgfh")
+debug_color = Color(0.638397, 0.523081, 0.143036, 0.42)
 
 [connection signal="input_event" from="table" to="table" method="_on_input_event"]
 [connection signal="mouse_entered" from="table" to="table" method="_on_mouse_entered"]
