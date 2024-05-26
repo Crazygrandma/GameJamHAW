@@ -31,6 +31,7 @@ stream = ExtResource("2_la3ya")
 bus = &"Music"
 
 [node name="cat1" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +41,7 @@ grow_vertical = 2
 texture = ExtResource("4_3i027")
 
 [node name="cat2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,6 +51,7 @@ grow_vertical = 2
 texture = ExtResource("5_3f26a")
 
 [node name="cat3" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,6 +61,7 @@ grow_vertical = 2
 texture = ExtResource("6_nd5u4")
 
 [node name="cat4" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

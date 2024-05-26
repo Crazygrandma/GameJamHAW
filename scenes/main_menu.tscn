@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_ny0si"]
 [ext_resource type="Texture2D" uid="uid://dn5lep46r6ciu" path="res://assets/sprites/environment/TitleScreen.jpg" id="2_28g7c"]
-[ext_resource type="AudioStream" uid="uid://dhkp81ew8jove" path="res://assets/MusicSounds/Town1.ogg" id="2_fuase"]
 [ext_resource type="Texture2D" uid="uid://cln0yqgpvml6o" path="res://assets/sprites/TitleScreen/1.png" id="3_xh7uy"]
 [ext_resource type="Script" path="res://scenes/HSliderMasterVolume.gd" id="4_ao0sf"]
 [ext_resource type="AudioStream" uid="uid://c8tk7brpt8s8f" path="res://assets/MusicSounds/Cursor3.ogg" id="4_b0obf"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c3h7rhg1t4r06" path="res://assets/sprites/TitleScreen/5.png" id="7_k76u3"]
 [ext_resource type="Texture2D" uid="uid://3u4osafngi5d" path="res://assets/sprites/TitleScreen/6.png" id="8_2vhf2"]
 [ext_resource type="Texture2D" uid="uid://b5rltobgvgag6" path="res://assets/sprites/TitleScreen/7.png" id="9_x2qk8"]
+[ext_resource type="AudioStream" uid="uid://f2ehwwjeh57t" path="res://assets/MusicSounds/Game Music/main menu.mp3" id="10_imw5v"]
 [ext_resource type="Texture2D" uid="uid://871572ugrf3m" path="res://assets/sprites/TitleScreen/6D0C0C24-62F2-4DC7-B297-094CC4766FE2.png" id="10_qnph7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7klp7"]
@@ -129,7 +129,7 @@ grow_vertical = 2
 texture = SubResource("AnimatedTexture_o16dt")
 
 [node name="Main_Menu_Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_fuase")
+stream = ExtResource("10_imw5v")
 autoplay = true
 bus = &"Music"
 

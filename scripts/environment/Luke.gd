@@ -15,7 +15,7 @@ extends Area2D
 
 @onready var level_1 = $".."
 
-const CREDITS = preload("res://scenes/Credits.tscn") as PackedScene
+@onready var outro = preload("res://scenes/Outro.tscn") as PackedScene
 
 signal itemPickup(name)
 
@@ -62,7 +62,7 @@ func _process(delta):
 					
 					print("End game")
 					
-					get_tree().change_scene_to_packed(CREDITS)
+					get_tree().change_scene_to_packed(outro)
 					
 					itemClicked = false
 					
