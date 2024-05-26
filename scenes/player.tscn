@@ -584,7 +584,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hide",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -679,7 +679,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle_L",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -714,7 +714,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump_L",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -746,13 +746,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk_L",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_buguj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(-32, -81)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5767o")
@@ -760,6 +761,7 @@ animation = &"Hide"
 autoplay = "Idle_R"
 
 [node name="facingLeft" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(28, -81)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_joky3")
