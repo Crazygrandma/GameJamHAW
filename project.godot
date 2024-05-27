@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-mouse_cursor/custom_image="res://assets/sprites/HandClosed.png"
+mouse_cursor/custom_image="res://assets/sprites/cursor/cursor_paw_clutch.png"
 mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [editor]

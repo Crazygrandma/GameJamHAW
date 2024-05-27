@@ -11,9 +11,11 @@ extends Control
 @onready var cat_5 = $cat5
 @onready var cat_6 = $cat6
 @onready var cat_7 = $cat7
+@onready var btn_skip = $MarginContainer/VBoxContainer/Btn_Skip as Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	btn_skip.button_down.connect(on_skip_pressed)
 	intro_music.play()
 	#await get_tree().create_timer(0).timeout
 	cat_1.visible = true
@@ -35,6 +37,9 @@ func _ready():
 	await get_tree().create_timer(2.5).timeout
 	get_tree().change_scene_to_packed(levelOne)
 
+func on_skip_pressed() -> void:
+	get_tree().change_scene_to_packed(levelOne)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
