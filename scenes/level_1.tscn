@@ -1,38 +1,439 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7p31b35pnf5m"]
+[gd_scene load_steps=37 format=3 uid="uid://b7p31b35pnf5m"]
 
 [ext_resource type="PackedScene" uid="uid://byvc75gerfdm6" path="res://scenes/player.tscn" id="1_0uidn"]
 [ext_resource type="Script" path="res://scripts/environment/level_1.gd" id="1_fta55"]
-[ext_resource type="Texture2D" uid="uid://c6kmg72nvbxsa" path="res://assets/sprites/environment/Background.png" id="4_gjy46"]
-[ext_resource type="PackedScene" uid="uid://bksjiwkl25vdm" path="res://scenes/item.tscn" id="4_x7tjq"]
-[ext_resource type="Texture2D" uid="uid://l0ns536f8yqf" path="res://assets/sprites/props/0.png" id="5_6sfak"]
+[ext_resource type="Texture2D" uid="uid://b6mjd4jftm370" path="res://assets/sprites/environment/myromeempire.png" id="3_ypvrd"]
+[ext_resource type="Script" path="res://scripts/environment/ladder.gd" id="7_fwmuc"]
+[ext_resource type="Script" path="res://scripts/Item/item.gd" id="7_rdjni"]
+[ext_resource type="Texture2D" uid="uid://bnthpax6rihs3" path="res://assets/sprites/environment/shelf_.png" id="8_e6ku4"]
+[ext_resource type="AudioStream" uid="uid://bj2af7wxvi6xx" path="res://assets/MusicSounds/General/grab.mp3" id="8_t4lh3"]
+[ext_resource type="Texture2D" uid="uid://bjc2ms2kan686" path="res://assets/sprites/props/can_bg.png" id="8_ujdox"]
+[ext_resource type="Texture2D" uid="uid://m61tgdvim70o" path="res://assets/sprites/props/canopenr_small_bg.png" id="9_7c71q"]
+[ext_resource type="Texture2D" uid="uid://cj8bybwxqywok" path="res://assets/sprites/environment/fuckingtablef_.png" id="9_d5gej"]
+[ext_resource type="Texture2D" uid="uid://b8w0ehde1j8n7" path="res://assets/sprites/props/FISHHOOK2.png" id="10_mptde"]
+[ext_resource type="Texture2D" uid="uid://dvefj7ggx2c5i" path="res://assets/sprites/props/FISHRODNOHOOK.png" id="11_iwojg"]
+[ext_resource type="Texture2D" uid="uid://c14483pr5ip4j" path="res://assets/sprites/props/FISHRODWITHHOOK1.png" id="12_53qjs"]
+[ext_resource type="Texture2D" uid="uid://b5rm0e1sr7lyw" path="res://assets/sprites/props/SHARKMASK.png" id="13_g5ur0"]
+[ext_resource type="Texture2D" uid="uid://dsu1bna40c6du" path="res://assets/sprites/environment/ladder.png" id="14_qrpq6"]
+[ext_resource type="Texture2D" uid="uid://b1u25qjfebv6n" path="res://assets/sprites/props/nextlvl_no_bg.png" id="15_0ak35"]
+[ext_resource type="Script" path="res://scripts/environment/Luke.gd" id="15_pkrwx"]
+[ext_resource type="AudioStream" uid="uid://ilhawuea1q22" path="res://assets/MusicSounds/General/combine_success.mp3" id="18_62qv6"]
+[ext_resource type="AudioStream" uid="uid://dcp2gy4ilaln8" path="res://assets/MusicSounds/General/combine_fail.mp3" id="19_8gkf0"]
+[ext_resource type="AudioStream" uid="uid://c0jh5p23nwyup" path="res://assets/MusicSounds/Level 1/Hatch opening.wav" id="20_ep2bu"]
+[ext_resource type="AudioStream" uid="uid://gwmy7l66g77w" path="res://assets/MusicSounds/General/walk.mp3" id="21_6x166"]
+[ext_resource type="AudioStream" uid="uid://ccq5c0yx1lfgu" path="res://assets/MusicSounds/Game Music/chiptune upbeat.mp3" id="22_j2d25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3v3d"]
+size = Vector2(43, 41.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ibal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eejv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2fk6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kctt2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ap13k"]
+radius = 15.7459
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgc03"]
+radius = 43.9025
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fyuws"]
+radius = 29.1204
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_254yj"]
+radius = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxnhs"]
+size = Vector2(22, 97)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22s75"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3yn5"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdrfi"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etgfh"]
+size = Vector2(41, 20)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_fta55")
 
 [node name="Player" parent="." instance=ExtResource("1_0uidn")]
-position = Vector2(-461, 289)
+z_index = 9
+position = Vector2(-143, 84)
+scale = Vector2(0.2, 0.2)
+playerSpeed = 100.0
+
+[node name="CatAnimation" parent="Player" index="0"]
+animation = &"Idle_R"
+
+[node name="facingLeft" parent="Player" index="1"]
+visible = false
+animation = &"Jump_L"
+
+[node name="CollisionShape2D" parent="Player" index="2"]
+position = Vector2(0, -70)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.6, 0.6)
+zoom = Vector2(3, 3)
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -10
+position = Vector2(0, -3)
+texture = ExtResource("3_ypvrd")
+
+[node name="table" type="Area2D" parent="."]
+position = Vector2(10, 0)
+script = ExtResource("7_fwmuc")
+ItemTooltipText = "Hochklettern"
+
+[node name="Sprite2D" type="Sprite2D" parent="table"]
+texture = ExtResource("9_d5gej")
+
+[node name="Tooltip" type="Label" parent="table"]
+z_index = 10
+offset_left = -48.0
+offset_top = -73.0
+offset_right = 29.0
+offset_bottom = -50.0
+theme_override_font_sizes/font_size = 12
+text = "Hochklettern"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="InteractionCollidetr" type="CollisionShape2D" parent="table"]
+position = Vector2(-49, 53)
+shape = SubResource("RectangleShape2D_c3v3d")
+
+[node name="FromCollider" type="CollisionShape2D" parent="table"]
+position = Vector2(-49, 85)
+shape = SubResource("CircleShape2D_7ibal")
+disabled = true
+debug_color = Color(0.280676, 0.622209, 0.312688, 0.42)
+
+[node name="ToCollider" type="CollisionShape2D" parent="table"]
+position = Vector2(-48, 34)
+shape = SubResource("CircleShape2D_2eejv")
+disabled = true
+debug_color = Color(0.962863, 0, 0.502095, 0.42)
+
+[node name="MinCollider" type="CollisionShape2D" parent="table"]
+position = Vector2(-67, 29)
+shape = SubResource("CircleShape2D_t2fk6")
+debug_color = Color(0.980594, 0, 0.378337, 0.42)
+
+[node name="MaxCollider" type="CollisionShape2D" parent="table"]
+position = Vector2(-29, 29)
+shape = SubResource("CircleShape2D_kctt2")
+debug_color = Color(0.966319, 0, 0.48127, 0.42)
+
+[node name="Dose" type="Area2D" parent="." node_paths=PackedStringArray("resultingItem")]
+z_index = 1
+position = Vector2(-25, 29)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_gjy46")
+script = ExtResource("7_rdjni")
+ItemTooltipText = "Dose"
+itemName = "dose"
+requestedItemName = "dosenöffner"
+resultingItem = NodePath("../Haken")
 
-[node name="Item" parent="." instance=ExtResource("4_x7tjq")]
-position = Vector2(122, 221)
+[node name="Sprite2D" type="Sprite2D" parent="Dose"]
+z_index = 1
+texture = ExtResource("8_ujdox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dose"]
+z_index = 1
+shape = SubResource("CircleShape2D_ap13k")
+
+[node name="Tooltip" type="Label" parent="Dose"]
+z_index = 10
+offset_left = 11.0
+offset_top = -7.0
+offset_right = 257.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 12
+text = "Dose"
+metadata/_edit_use_anchors_ = true
+
+[node name="Canopener" type="Area2D" parent="." node_paths=PackedStringArray("resultingItem")]
+z_index = 1
+position = Vector2(83, 79)
+rotation = -0.888449
+script = ExtResource("7_rdjni")
+ItemTooltipText = "Dosenöffner"
+itemName = "dosenöffner"
+requestedItemName = "dose"
+resultingItem = NodePath("../Haken")
+
+[node name="Sprite2D" type="Sprite2D" parent="Canopener"]
+z_index = 1
+position = Vector2(18.4321, -20.131)
+texture = ExtResource("9_7c71q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Canopener"]
+z_index = 1
+position = Vector2(18.1411, -17.3176)
+shape = SubResource("CircleShape2D_ap13k")
+
+[node name="Tooltip" type="Label" parent="Canopener"]
+z_index = 10
+offset_left = -36.5782
+offset_top = -127.476
+offset_right = 209.422
+offset_bottom = -77.4756
+rotation = 0.88292
+theme_override_font_sizes/font_size = 10
+text = "Dosenöffner"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Haken" type="Area2D" parent="." node_paths=PackedStringArray("resultingItem")]
+position = Vector2(-342, 214)
+scale = Vector2(0.205, 0.205)
+script = ExtResource("7_rdjni")
+ItemTooltipText = "Haken"
 itemName = "Haken"
+requestedItemName = "rodnohook"
+resultingItem = NodePath("../RodWithHook")
 
-[node name="Sprite2D" parent="Item" index="0"]
-texture = ExtResource("5_6sfak")
+[node name="Sprite2D" type="Sprite2D" parent="Haken"]
+scale = Vector2(4, 4)
+texture = ExtResource("10_mptde")
 
-[node name="Item2" parent="." instance=ExtResource("4_x7tjq")]
-position = Vector2(436, 229)
-itemName = "item2"
+[node name="Tooltip" type="Label" parent="Haken"]
+z_index = 10
+offset_left = -58.5366
+offset_top = -92.6829
+offset_right = 187.463
+offset_bottom = -42.6829
+theme_override_font_sizes/font_size = 36
+text = "Tooltip"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="itemPickup" from="Item2" to="." method="_on_item_item_pickup"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Haken"]
+shape = SubResource("CircleShape2D_pgc03")
+
+[node name="RodNoHook" type="Area2D" parent="." node_paths=PackedStringArray("resultingItem")]
+position = Vector2(-89, 91)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("7_rdjni")
+ItemTooltipText = "Angel ohne Haken"
+itemName = "rodnohook"
+requestedItemName = "Haken"
+resultingItem = NodePath("../RodWithHook")
+
+[node name="Sprite2D" type="Sprite2D" parent="RodNoHook"]
+texture = ExtResource("11_iwojg")
+
+[node name="Tooltip" type="Label" parent="RodNoHook"]
+z_index = 10
+offset_left = -116.0
+offset_top = -42.0
+offset_right = 130.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 12
+text = "Angel ohne Haken"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RodNoHook"]
+shape = SubResource("CircleShape2D_fyuws")
+
+[node name="RodWithHook" type="Area2D" parent="."]
+position = Vector2(-228, 200)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("7_rdjni")
+ItemTooltipText = "Angel mit Haken"
+itemName = "rodwithhook"
+
+[node name="Sprite2D" type="Sprite2D" parent="RodWithHook"]
+texture = ExtResource("12_53qjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RodWithHook"]
+shape = SubResource("CircleShape2D_254yj")
+
+[node name="Tooltip" type="Label" parent="RodWithHook"]
+z_index = 10
+offset_left = 36.0
+offset_top = -92.0
+offset_right = 282.0
+offset_bottom = -42.0
+theme_override_font_sizes/font_size = 36
+text = "Tooltip"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = -106.0
+offset_right = 105.0
+offset_bottom = -83.0
+text = "Item:"
+
+[node name="ladder" type="Sprite2D" parent="."]
+position = Vector2(-127, 11)
+texture = ExtResource("14_qrpq6")
+
+[node name="shelf" type="Area2D" parent="."]
+script = ExtResource("7_fwmuc")
+ItemTooltipText = "Hochklettern"
+
+[node name="Sprite2D" type="Sprite2D" parent="shelf"]
+texture = ExtResource("8_e6ku4")
+
+[node name="Tooltip" type="Label" parent="shelf"]
+z_index = 10
+offset_left = -39.0
+offset_top = -70.0
+offset_right = 38.0
+offset_bottom = -47.0
+theme_override_font_sizes/font_size = 12
+text = "Hochklettern"
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelf"]
+position = Vector2(-127, 11.5)
+shape = SubResource("RectangleShape2D_kxnhs")
+
+[node name="ToCollider" type="CollisionShape2D" parent="shelf"]
+position = Vector2(-140, -27)
+shape = SubResource("CircleShape2D_22s75")
+
+[node name="MinCollider" type="CollisionShape2D" parent="shelf"]
+position = Vector2(-189, -24)
+shape = SubResource("CircleShape2D_22s75")
+debug_color = Color(0.959559, 1.05888e-06, 0.520952, 0.42)
+
+[node name="MaxCollider" type="CollisionShape2D" parent="shelf"]
+position = Vector2(-138, -26)
+shape = SubResource("CircleShape2D_22s75")
+debug_color = Color(0.959053, 1.82897e-06, 0.523759, 0.42)
+
+[node name="FromCollider" type="CollisionShape2D" parent="shelf"]
+position = Vector2(-123, 83)
+shape = SubResource("CircleShape2D_22s75")
+disabled = true
+
+[node name="Haimaske" type="Area2D" parent="."]
+position = Vector2(-174, -29)
+script = ExtResource("7_rdjni")
+ItemTooltipText = "Haimaske"
+itemName = "haimaske"
+
+[node name="Sprite2D" type="Sprite2D" parent="Haimaske"]
+texture = ExtResource("13_g5ur0")
+
+[node name="Tooltip" type="Label" parent="Haimaske"]
+z_index = 10
+offset_left = -119.0
+offset_top = -44.0
+offset_right = 127.0
+offset_bottom = 6.0
+theme_override_font_sizes/font_size = 12
+text = "Tooltip"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Haimaske"]
+shape = SubResource("CircleShape2D_a3yn5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Haimaske"]
+
+[node name="Luke" type="Area2D" parent="."]
+position = Vector2(-109, -95)
+script = ExtResource("15_pkrwx")
+ItemTooltipText = "Luke"
+requestedItemName = "rodwithhook"
+
+[node name="Sprite2D" type="Sprite2D" parent="Luke"]
+texture = ExtResource("15_0ak35")
+
+[node name="Tooltip" type="Label" parent="Luke"]
+z_index = 10
+offset_left = -122.0
+offset_top = -23.0
+offset_right = 124.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 12
+text = "Luke"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectCollider" type="CollisionShape2D" parent="Luke"]
+position = Vector2(51, 4)
+shape = SubResource("CircleShape2D_cdrfi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Luke"]
+
+[node name="ExitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(-150, -34)
+shape = SubResource("RectangleShape2D_etgfh")
+debug_color = Color(0.638397, 0.523081, 0.143036, 0.42)
+
+[node name="Pickupsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_t4lh3")
+bus = &"Sfx"
+
+[node name="CombineSuccess" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_62qv6")
+bus = &"Sfx"
+
+[node name="CombineFail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_8gkf0")
+bus = &"Sfx"
+
+[node name="HatchOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_ep2bu")
+bus = &"Sfx"
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_6x166")
+bus = &"Sfx"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_j2d25")
+bus = &"Music"
+
+[connection signal="input_event" from="table" to="table" method="_on_input_event"]
+[connection signal="mouse_entered" from="table" to="table" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="table" to="table" method="_on_mouse_exited"]
+[connection signal="input_event" from="Dose" to="Dose" method="_on_input_event"]
+[connection signal="mouse_entered" from="Dose" to="Dose" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Dose" to="Dose" method="_on_mouse_exited"]
+[connection signal="input_event" from="Canopener" to="Canopener" method="_on_input_event"]
+[connection signal="mouse_entered" from="Canopener" to="Canopener" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Canopener" to="Canopener" method="_on_mouse_exited"]
+[connection signal="input_event" from="Haken" to="Haken" method="_on_input_event"]
+[connection signal="mouse_entered" from="Haken" to="Haken" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Haken" to="Haken" method="_on_mouse_exited"]
+[connection signal="input_event" from="RodNoHook" to="RodNoHook" method="_on_input_event"]
+[connection signal="mouse_entered" from="RodNoHook" to="RodNoHook" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RodNoHook" to="RodNoHook" method="_on_mouse_exited"]
+[connection signal="input_event" from="RodWithHook" to="RodWithHook" method="_on_input_event"]
+[connection signal="mouse_entered" from="RodWithHook" to="RodWithHook" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RodWithHook" to="RodWithHook" method="_on_mouse_exited"]
+[connection signal="input_event" from="shelf" to="shelf" method="_on_input_event"]
+[connection signal="mouse_entered" from="shelf" to="shelf" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="shelf" to="shelf" method="_on_mouse_exited"]
+[connection signal="input_event" from="Haimaske" to="Haimaske" method="_on_input_event"]
+[connection signal="mouse_entered" from="Haimaske" to="Haimaske" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Haimaske" to="Haimaske" method="_on_mouse_exited"]
+[connection signal="input_event" from="Luke" to="Luke" method="_on_input_event"]
+[connection signal="mouse_entered" from="Luke" to="Luke" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Luke" to="Luke" method="_on_mouse_exited"]
 
 [editable path="Player"]
-[editable path="Item"]
-[editable path="Item2"]

@@ -5,6 +5,8 @@ extends Area2D
 @export var itemName = ""
 
 
+@export var requestedItemName = ""
+@export var resultingItem: item
 @onready var tooltip = $Tooltip
 @onready var collision_shape_2d = $CollisionShape2D
 
@@ -12,12 +14,11 @@ extends Area2D
 @onready var player = $"../Player"
 
 @onready var level_1 = $".."
+@onready var pickupsound = $"../Pickupsound"
+@onready var combine_success = $"../CombineSuccess"
+@onready var combine_fail = $"../CombineFail"
 
 
-
-
-signal onItem
-signal offItem
 signal itemPickup(name)
 
 const CURSOR_PAW_OPEN = preload("res://assets/sprites/cursor/cursor_paw_open.png")
@@ -30,7 +31,6 @@ var itemClicked = false
 
 func _ready():
 	# Connect to signals
-	
 
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
@@ -43,42 +43,57 @@ func _process(delta):
 	if(itemClicked):
 		# Check if player is near item
 		var distance = position.distance_to(player.position)
-		if distance < collision_shape_2d.shape.radius * 2:
+		if distance < collision_shape_2d.shape.radius:
 			# Player can reach item
+			
+			# play pickupsound
+			pickupsound.play()
+			
 			# Emit itemPickup signal
 			if level_1.currentItem:
-				print("Item already in inv..swapping")
-				var prevPos = self.position
-				self.position = Vector2(1000,0)
-				level_1.currentItem.position = prevPos
-				level_1.currentItem = self
-				itemClicked = false
+				
+				# check if item is required
+				if level_1.currentItem.itemName == requestedItemName:
+					print("Do something")
+					
+					combine_success.play()
+					
+					# Spawn resulting item
+					level_1.currentItem = null
+					var prevPos = self.position
+					resultingItem.position = prevPos
+					
+					queue_free()
+					
+					
+					
+				else:
+					combine_fail.play()
+						
+					print("Item already in inv..swapping")
+					var prevPos = self.position
+					self.position = Vector2(1000,0)
+					level_1.currentItem.position = prevPos
+					level_1.currentItem = self
+					itemClicked = false
 			else:
 				print("pickupItem")
 				level_1.currentItem = self
 				self.position = Vector2(1000,0)
 				itemClicked = false
 				
-				
 
-func _on_item_pickup():
-	
-	print("added to inv")
-	# Move item out of frame
-	position = Vector2(0,0)
-
-
-	
-	
 
 func _on_mouse_entered():
 	mouseOverItem = true
-	onItem.emit()
+	#onItem.emit()
+	Input.set_custom_mouse_cursor(CURSOR_PAW_OPEN)
 	tooltip.visible = true
 
 func _on_mouse_exited():
 	mouseOverItem = false
-	offItem.emit()
+	#offItem.emit()
+	Input.set_custom_mouse_cursor(CURSOR_PAW_CLUTCH)
 	tooltip.visible = false
 	
 func _input(event):
@@ -88,3 +103,5 @@ func _input(event):
 		else:
 			#Player clicked somewhere else
 			itemClicked = false
+
+

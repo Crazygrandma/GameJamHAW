@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0jh5p23nwyup"
+path="res://.godot/imported/Hatch opening.wav-21d817e481a986ee64ded535d3a009e4.sample"
+
+[deps]
+
+source_file="res://assets/MusicSounds/Level 1/Hatch opening.wav"
+dest_files=["res://.godot/imported/Hatch opening.wav-21d817e481a986ee64ded535d3a009e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

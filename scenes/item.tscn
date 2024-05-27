@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/Item/item.gd" id="1_vrfnk"]
 [ext_resource type="Texture2D" uid="uid://l0ns536f8yqf" path="res://assets/sprites/props/0.png" id="2_6q5o8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ap13k"]
-radius = 59.1354
+[sub_resource type="CircleShape2D" id="CircleShape2D_254yj"]
+radius = 63.0079
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jli78"]
 atlas = ExtResource("2_6q5o8")
@@ -49,9 +49,10 @@ animations = [{
 script = ExtResource("1_vrfnk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ap13k")
+shape = SubResource("CircleShape2D_254yj")
 
 [node name="Tooltip" type="Label" parent="."]
+z_index = 10
 offset_left = 57.0
 offset_top = -119.0
 offset_right = 303.0
